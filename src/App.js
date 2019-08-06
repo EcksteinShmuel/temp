@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      txt: 'this is the state',
+      cat: 0
+    }
+  }
+  update ( e ){
+    this.setState({txt: e.target.value})
+    this.setState({cat: e.target.value})
+  }
+  
+  render(){
+    return (
+      <div>
+        <input type="text"
+        onChange={this.update.bind(this)}/>
+        <h1> {this.state.txt}  - {this.state.cat}</h1>
+        <button>I <Heart /> React </button>
+      </div>
+    )
+  }
 }
 
-export default App;
+class Heart extends React.Component {
+  render(){
+    return <span>love</span>
+  }
+}
+
+export default App
